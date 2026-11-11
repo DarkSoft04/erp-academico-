@@ -82,4 +82,38 @@ Está orientado a **cooperativas de transporte urbano, gerentes de operaciones, 
 
 ---
 
-## 🏗️ Arquitectura y
+## 🏗️ Arquitectura y Estructura del Proyecto
+
+### Flujo de Integración Interdepartamental y Modelo de Dominio (Mermaid.js)
+
+El siguiente diagrama representa cómo interactúan las tres áreas de negocio sobre la base de datos relacional única y las entidades centrales definidas en el sistema:
+
+```mermaid
+graph TD
+    subgraph "Áreas de Negocio del ERP Trans Fast.Inc"
+        OP[🚌 Área de Operaciones y Despacho<br/>Logística de Flota]
+        RH[👨‍✈️ Área de Recursos Humanos<br/>Gestión de Personal]
+        MT[🔧 Área de Mantenimiento y Soporte<br/>Gestión de Activos]
+    end
+
+    subgraph "Fuente Única de Datos Compartida (BD Relacional)"
+        DB[(🗄️ Base de Datos Centralizada)]
+        E1[Entidad: Unidades de Transporte]
+        E2[Entidad: Conductores]
+        E3[Entidad: Rutas y Circuitos]
+        E4[Entidad: Paradas y Tiempos]
+        E5[Entidad: Registros de Mantenimiento]
+    end
+
+    OP -->|Planifica y controla| DB
+    RH -->|Valida licencias y turnos| DB
+    MT -->|Registra órdenes de trabajo| DB
+
+    MT -.->|Bloqueo automático de unidad en taller| OP
+    RH -.->|Habilitación legal y operativa del conductor| OP
+
+    DB --- E1
+    DB --- E2
+    DB --- E3
+    DB --- E4
+    DB --- E5
