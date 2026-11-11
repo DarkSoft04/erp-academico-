@@ -1,5 +1,12 @@
 <div align="center">
 
+<div align="center">
+
+# `> DarkSoft04`
+### **Construyendo soluciones de software eficientes y escalables**
+
+</div>
+
 <img width="380" alt="Trans Fast Banner" src="https://github.com/user-attachments/assets/8aca337a-0dc8-4732-99bc-a4c65489cc72">
 
 # 🚍 Trans Fast.Inc — Sistema ERP de Transporte
